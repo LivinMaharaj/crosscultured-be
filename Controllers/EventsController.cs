@@ -22,7 +22,7 @@ namespace ccc_be.Controllers
 
 
         [HttpGet]
-        [Route("/recurring")]
+        [Route("/targetevent")]
         public async Task<IActionResult> GetAllRecurringEvents()
 
         {

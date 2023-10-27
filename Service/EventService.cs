@@ -24,13 +24,13 @@ namespace ccc_be.Service
             if (onGoingEvents.Count()>0) 
             {
                 targetEvent.Add(onGoingEvents[0]);
-                resultant.Add("TargetEvent", targetEvent);
+                resultant.Add("TargetOngoingEvent", targetEvent);
                 onGoingEvents.RemoveAt(0);
             }
             else if (upComingEvents.Count()>0)
             {
                 targetEvent.Add(upComingEvents[0]);
-                resultant.Add("TargetEvent", targetEvent);
+                resultant.Add("TargetUpcomingEvent", targetEvent);
                 upComingEvents.RemoveAt(0);
             };
             otherEvents.AddRange(onGoingEvents);

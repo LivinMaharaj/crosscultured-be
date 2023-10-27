@@ -31,19 +31,6 @@ namespace ccc_be.Data
             modelBuilder.Entity<Events>().ToTable("events").HasKey(e => e.EventID);
         }
 
-        public IEnumerable<RecurringEvents> UpcomingRecurringEvents(int eventDayId, TimeSpan startTime)
-        {
-            var resultant = RecurringEvents.Where(e => e.EventDayId == eventDayId && e.StartTime > startTime).OrderBy(e=> e.EventDayId).Take(1).ToList();
-            if (resultant.Count > 0) {
-                return resultant;
-            }
-            resultant = RecurringEvents.Where(e => e.EventDayId > eventDayId).OrderBy(e => e.EventDayId).ThenBy(e=> e.StartTime).Take(1).ToList();
-            if (resultant.Count > 0) { 
-                return resultant; 
-            }
-            resultant = RecurringEvents.Where(e => e.EventDayId < eventDayId).OrderBy(e => e.EventDayId).Take(1).ToList();
-            return resultant;
-        }
         public IEnumerable<Events> UpcomingEvents(DateTime startTime) {
             var subquery = Events.Where(e => e.EventStartTime > startTime).OrderBy(e => e.EventStartTime).OrderByDescending(e => e.EventCategory).Select(e => e.EventStartTime).FirstOrDefault();
             var resultant = Events.Where(e => e.EventStartTime == subquery);
