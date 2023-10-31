@@ -33,7 +33,7 @@ namespace ccc_be.Data
 
         public IEnumerable<Events> UpcomingEvents(DateTime startTime) {
             var subquery = Events.Where(e => e.EventStartTime > startTime).OrderBy(e => e.EventStartTime).OrderByDescending(e => e.EventCategory).Select(e => e.EventStartTime).FirstOrDefault();
-            var resultant = Events.Where(e => e.EventStartTime == subquery);
+            var resultant = Events.Where(e => e.EventStartTime >= subquery).Take(7);
 
             return resultant;
         }
