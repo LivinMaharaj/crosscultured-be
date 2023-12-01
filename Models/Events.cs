@@ -10,5 +10,6 @@
         public DateTime EventEndTime { get; set; }
         public string EventLocation { get; set; }
         public string EventAddress {  get; set; }
+        public string EventState { get; set; }
     }
 }

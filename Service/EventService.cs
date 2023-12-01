@@ -35,7 +35,8 @@ namespace ccc_be.Service
             };
             otherEvents.AddRange(onGoingEvents);
             otherEvents.AddRange(upComingEvents);
-            resultant.Add("OtherEvents", otherEvents);
+            resultant.Add("OtherOngoingEvents", onGoingEvents);
+            resultant.Add("OtherUpcomingEvents", upComingEvents);
 
             return resultant;
         }
